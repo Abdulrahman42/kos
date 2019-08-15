@@ -1,11 +1,32 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
+import { Calendar} from 'react-native-calendars'
 
-export default class Calender extends Component {
+export default class Calenders extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.onDayPress = this.onDayPress.bind(this);
+      }
+    onDayPress(day) {
+        this.setState({
+          selected: day.dateString
+        });
+        this.props.navigation.navigate('Duration', { bookingDate : day.dateString } )
+      }
     render() {
         return (
             <View>
-                <Text> textInComponent </Text>
+               <Calendar
+                onDayPress={this.onDayPress} 
+                hideExtraDays
+                markedDates={{[this.state.selected]: {selected: true}}}
+                    theme={{
+            selectedDayBackgroundColor: 'green',
+            todayTextColor: 'green',
+            arrowColor: 'green',
+          }}
+        />
             </View>
         )
     }

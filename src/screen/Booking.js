@@ -1,16 +1,21 @@
 import React, { Component} from 'react'
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
-import { Appbar, Button, Checkbox } from 'react-native-paper';
+import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView} from 'react-native'
+import { Appbar, Button, Checkbox } from 'react-native-paper'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 
-
-
-export default class Chat extends Component{
+export default class Booking extends Component{
     state = {
         checked: false,
       };
+      static navigationOptions = {
+        header: null
+      };
+    
       render(){
-        const { checked } = this.state;    
+        const { checked } = this.state;
+        const isEnable  = checked == !false;
+        const time = this.props.navigation.getParam('bookingDate', '')
+          
         return(
         <View style={{flex:1}}>
             <Appbar.Header style={{backgroundColor:'#2980b9'}}>
@@ -18,22 +23,24 @@ export default class Chat extends Component{
                 title='Booking'>
                 </Appbar.Content>
             </Appbar.Header>
+            <ScrollView>
             <View  style={style.container}>
                 <View style={style.time}>
                     <View style={style.icon}>
+                            <Text>Tanggal Masuk </Text>
+                            <View style={{alignItems:'flex-end'}}>
                         <TouchableOpacity onPress={()=>{
                             this.props.navigation.navigate('Calender')
                         }}>
-                            <Text>Tanggal Masuk</Text>
-                            <View style={{alignItems:'flex-end'}}>
-                            <EvilIcons name="calendar"  size={25}/>
-                            </View>
+                     
+                            <EvilIcons name="calendar"  size={18}>{time}</EvilIcons>
                         </TouchableOpacity>
+                            </View>
                     </View>
                     <View style={style.icon}>
-                        <TouchableOpacity>
+                        {/* <TouchableOpacity> */}
                             <Text>Durasi Sewa</Text>
-                        </TouchableOpacity>
+                                                   {/* </TouchableOpacity> */}
                     </View>
                     <View style={style.icon}>
                         <TouchableOpacity>
@@ -41,9 +48,9 @@ export default class Chat extends Component{
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={style.line} />
+                <View style={style.line}/>
            
-                <View style={{flex:1,flexDirection:'row', marginTop:10}}>
+                <View style={{flex:1,flexDirection:'row', marginVertical:10}}>
                         <View style={{ alignItems:'flex-start', marginRight:15}}>
                         <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
                     style={{width: 100, height: 100}} />
@@ -59,10 +66,15 @@ export default class Chat extends Component{
                             <EvilIcons name="share-google"  size={25}/>
                                 </View>
                             </View>
+                            <View style={{flex:1, flexDirection:'row'}}>
+                                <View style={{flex:1, flexDirection:'row'}}>
+                            <Text>maman</Text>
+                            </View>
+                            </View>
                         </View>
                     </View>
                 <View style={style.line} />
-                <View style={{flex:1, marginTop:10}} >
+                <View style={{flex:1, marginVertical:10}} >
                     <View style={{flex:1,flexDirection:'row'}}>
                         <View style={{ alignItems:'flex-start'}}>
                             <Text style={{fontWeight:'bold'}} >
@@ -125,13 +137,12 @@ export default class Chat extends Component{
                     </View>
                 </View>
                 <View style={style.line} />
-                <View>
-
-                    <Text style={{fontWeight:'bold', alignItems:'flex-start', marginTop:10}}>
+                <View >
+                    <Text style={{fontWeight:'bold', alignItems:'flex-end',marginTop:10}}>
                         Keterangan Biaya Lain
                     </Text>
                 </View>
-                <View style={{flex:1, justifyContent:'flex-end', alignContent:'flex-end', marginBottom:10}} >
+                <View style={{flex:1, justifyContent:'flex-end', alignContent:'flex-end', marginTop:40}} >
                     <View style={{flexDirection:'row', alignItems:'center', marginBottom:5}}>
                         <Checkbox
                         color='#2980b9'
@@ -142,11 +153,14 @@ export default class Chat extends Component{
                             Saya menyetujui syarat dan ketentuan berlaku dan memastikan data di atas benar.
                         </Text>
                     </View>
-                        <Button color="#2980b9" mode="contained" onPress={() => console.log('Pressed')}>
+                        <Button  color="#2980b9" disabled={!isEnable} mode="contained" onPress={() => {
+                            this.props.navigation.navigate('Bookinglist')
+                        }}>
                             Book
                         </Button>
                 </View>
             </View>
+            </ScrollView>
         </View>
         )
     }
@@ -156,14 +170,13 @@ const style = StyleSheet.create(
     {
         container: {
             flex:1,
-            marginRight:10,
-            marginLeft:10,
+            marginHorizontal:10
             // marginTop:10
         },
         time:{
             flexDirection:'row',
             marginRight:15,
-            marginTop:15,
+            marginVertical:10
             
         },
         icon:{
@@ -174,11 +187,6 @@ const style = StyleSheet.create(
             backgroundColor: '#f2f0f0',
             width: 900,
             height: 5,
-            marginTop:5
         },
-        huni:{
-            alignItems:'flex-start',
-            marginTop: 10
-        }
     }
 )

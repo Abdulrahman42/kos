@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Text, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import { Appbar, Button } from 'react-native-paper';
 import Slideshow from 'react-native-slideshow';
 import { Card } from 'react-native-elements';
@@ -72,6 +72,9 @@ class Index extends Component {
     componentWillUnmount() {
         clearInterval(this.state.interval);
     }
+    static navigationOptions = {
+        header: null
+    };
  
     render() {
         return (
@@ -83,8 +86,8 @@ class Index extends Component {
                     <View style={styles.body}>
                         <Text style={{ fontWeight: 'bold', fontSize: 15, color:'#000000' }}>Hai</Text>
                         <Text style={{ fontWeight: 'bold', fontSize: 20, color:'#000000' }}>Mau cari kost dimana ?</Text>
-                        <TouchableOpacity>
-
+                        <TouchableOpacity onPress={()=>{ this.props.navigation.navigate('search')
+                        }}>
                         <Button style={styles.button} icon="search" color="#d0d0d0"  mode="outlined" onPress={() => this.props.navigation.navigate('Search')}><Text style={styles.button}>Masukan alamat atau nama tempat</Text></Button>
                         </TouchableOpacity>
                     </View>
@@ -106,7 +109,8 @@ class Index extends Component {
                                 <Text style={{ color: 'white', fontSize: 13 }}>Masuk Atau Daftar Disini</Text>
                             </View>
                             <View style={{ flexDirection: 'row', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'flex-end', alignContent: 'flex-end' }}>
-                                <Button mode='outlined' style={{borderColor:'white', position: 'absolute', width: 80, height: 30 }}><Text style={{ color: 'white', fontWeight: 'bold', fontSize: 10 }}>Login</Text></Button>
+                                <Button mode='outlined' style={{borderColor:'white', position: 'absolute', width: 80, height: 30 }} onPress={()=>{ this.props.navigation.navigate('search')
+                        }}><Text style={{ color: 'white', fontWeight: 'bold', fontSize: 10 }}>Login</Text></Button>
                             </View>
                         </View>
                         <Text style={{ fontWeight: 'bold', fontSize: 17, color: 'black', marginBottom: 5, marginTop: 10 }}>Kota Populer</Text>
@@ -124,7 +128,7 @@ class Index extends Component {
                                         containerStyle={{ padding: 0, width: 120, height: 260, marginLeft: 1, maxHeight: 190 }}
                                         image={{ uri: rowData.imageUrl , position: 'relative' }} 
                                         >
-                                        <Text style={{ marginBottom: 10 }} position={'absolute'}>
+                                        <Text style={{ marginBottom: 0 }} position={'absolute'}>
                                             {rowData.title}
                                         </Text>
                                     </Card>

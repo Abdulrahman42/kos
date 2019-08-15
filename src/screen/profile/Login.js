@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native';
 import { Appbar, Button} from 'react-native-paper';
 
-export default class LoginScreen extends Component {
+export default class Login extends Component {
+  static navigationOptions = {
+    header: null
+};
     render() {
         return (
             <View style={styles.container}>
@@ -13,6 +16,9 @@ export default class LoginScreen extends Component {
         />
       </Appbar.Header>
       <View style={styles.body}>
+        <View>
+        <EvilIcons name="share-google"  size={50}/>
+        </View>
         <Text style={styles.text}>
           Kamu belum login nih, yuk login untuk menikmati 
         </Text>
