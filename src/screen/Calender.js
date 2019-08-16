@@ -12,7 +12,7 @@ export default class Calenders extends Component {
         this.setState({
           selected: day.dateString
         });
-        this.props.navigation.navigate('Duration', { bookingDate : day.dateString } )
+        this.props.navigation.navigate('Booking', { bookingDate : day.dateString } )
       }
     render() {
         return (

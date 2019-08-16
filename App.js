@@ -6,7 +6,8 @@ import HomeNavigator from './src/navigator/HomeNavigator';
 import WishlishNavigator from './src/navigator/WishlistNavigator';
 import BookingNavigator from './src/navigator/BookingNavigator';
 import HomeScreen from './src/screen/home/HomeScreen';
-import Profile from './src/screen/profile/profile';
+import Profile from './src/screen/profile/Profile';
+import Setting from './src/screen/Setting';
 
 const TabNavigator = createBottomTabNavigator({
   Home: {
@@ -61,7 +62,7 @@ const TabNavigator = createBottomTabNavigator({
     }
   },
   Profile: {
-    screen: Profile,
+    screen: Setting,
     navigationOptions: {
       tabBarIcon: ({
         tintColor

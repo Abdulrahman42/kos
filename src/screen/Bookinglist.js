@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { Card, Appbar } from 'react-native-paper';
 
 export default class Bookinglist extends Component {
@@ -12,32 +12,48 @@ export default class Bookinglist extends Component {
       header:null
   };
 
-  
-
   render() {
     return (
       <View >
         <View>
-
-        <Appbar.Header>
+        <Appbar.Header style={styles.header}>
         <Appbar.BackAction
           onPress={()=>{ this.props.navigation.navigate('HomeScreen')}}
         />
         <Appbar.Content
-          title="Title"
-          subtitle="Subtitle"
+          title="Booking List"
         />
       </Appbar.Header>
         </View>
-        <Card style={{flex:1, width:100,backgroundColor:'blue' }}>
-          <View style={{flex:1, }}>
-            <View style={styles.card}>
-              <Card.Cover style={{width: 100, height: 100}} source={{ uri: 'https://picsum.photos/700' }} />
-            </View>
-            {/* <View style={{backgroundColor:'red'}}>
-              <Text>Maman</Text>
-            </View> */}
-          </View>
+          <Card style={styles.container}>
+            <Card.Content style={{paddingHorizontal:0, paddingVertical:0}}>
+              <View style={{flexDirection:'row'}}>
+                <View>
+                  <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
+                    style={{width: 100, height: 120}} />
+                </View>
+                <View style={{flex:1, marginHorizontal:5}}>
+                  <View style={{marginVertical:10}}>
+                    <Text style={{fontWeight:'bold', fontSize:15}}>Nama kos</Text>
+                </View>
+                <View style={{flexDirection:'row'}}>
+                  <View style={{marginRight:15}}>
+                    <Text>Booking</Text>
+                    <Text>Tanggal Booking</Text>
+                  </View>
+                  <View>
+                        <Text>Durasi Sewa</Text>
+                        <Text>1 bulan</Text>
+                  </View>
+                </View>
+                  <View style={{marginTop:15}}>
+                    <Text style={{fontSize:15, color:'#84CFD9'}}>
+                      Tunggu Konfirmasi
+                    </Text>
+                  </View>
+                </View>
+             </View>
+          </Card.Content>
         </Card>
       </View>
     );
@@ -47,22 +63,17 @@ export default class Bookinglist extends Component {
 const styles = StyleSheet.create(
   {
   container:{
-    flex:1,
-    // flexDirection:'row',
-    marginHorizontal: 10,
+      marginHorizontal: 10,
     marginVertical:10,
-  },
-  card:
-  {
-    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 4,
     },
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
-    
     elevation: 9,
-
+  },
+  header:{
+    backgroundColor: '#2980b9'
   }
 })

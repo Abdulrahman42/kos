@@ -32,50 +32,43 @@ export default class Booking extends Component{
                         <TouchableOpacity onPress={()=>{
                             this.props.navigation.navigate('Calender')
                         }}>
-                     
                             <EvilIcons name="calendar"  size={18}>{time}</EvilIcons>
                         </TouchableOpacity>
                             </View>
                     </View>
                     <View style={style.icon}>
-                        {/* <TouchableOpacity> */}
                             <Text>Durasi Sewa</Text>
-                                                   {/* </TouchableOpacity> */}
                     </View>
                     <View style={style.icon}>
-                        <TouchableOpacity>
                             <Text>Tanggal Keluar</Text>
-                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={style.line}/>
-           
                 <View style={{flex:1,flexDirection:'row', marginVertical:10}}>
                         <View style={{ alignItems:'flex-start', marginRight:15}}>
                         <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
                     style={{width: 100, height: 100}} />
                         </View>
-                        <View style={{flex:1,alignItems:'flex-end'}}>
+                        <View style={{flex:1,alignItems:'flex-start'}}>
                             <Text>
-                              mamamamdfmamfsamdfm masd madmasfmamf
+                              Nama Kos 
                             </Text>
-                            <View style={{flex:1, flexDirection:'row'}}>
+                            <View style={{flex:1, flexDirection:'row', marginTop:10}}>
                                 <View style={{flex:1, flexDirection:'row'}}>
-
-                            <EvilIcons name="calendar"  size={25}/>
-                            <EvilIcons name="share-google"  size={25}/>
+                                    <EvilIcons name="calendar"  size={25}/>
+                                    <EvilIcons name="share-google"  size={25}/>
                                 </View>
                             </View>
                             <View style={{flex:1, flexDirection:'row'}}>
                                 <View style={{flex:1, flexDirection:'row'}}>
-                            <Text>maman</Text>
+                            <Text style={{fontWeight:'bold'}}>Rp. 1.750.000 / bulan</Text>
                             </View>
-                            </View>
+                        </View>
                         </View>
                     </View>
                 <View style={style.line} />
                 <View style={{flex:1, marginVertical:10}} >
-                    <View style={{flex:1,flexDirection:'row'}}>
+                    <View style={style.residance}>
                         <View style={{ alignItems:'flex-start'}}>
                             <Text style={{fontWeight:'bold'}} >
                             Data Penghuni
@@ -87,7 +80,7 @@ export default class Booking extends Component{
                             </Text>
                         </View>
                     </View>
-                    <View style={{flex:1,flexDirection:'row'}}>
+                    <View style={style.residance}>
                         <View style={{ alignItems:'flex-start'}}>
                             <Text>
                             Nama Lengkap
@@ -95,11 +88,11 @@ export default class Booking extends Component{
                         </View>
                         <View style={{flex:1,alignItems:'flex-end'}}>
                             <Text>
-                            Ubah
+                            Lol
                             </Text>
                         </View>
                     </View>
-                    <View style={{flex:1,flexDirection:'row'}}>
+                    <View style={style.residance}>
                         <View style={{ alignItems:'flex-start'}}>
                             <Text>
                             Jenis Kelamin
@@ -107,11 +100,11 @@ export default class Booking extends Component{
                         </View>
                         <View style={{flex:1,alignItems:'flex-end'}}>
                             <Text>
-                            Ubah
+                           Laki-laki
                             </Text>
                         </View>
                     </View>
-                    <View style={{flex:1,flexDirection:'row'}}>
+                    <View style={style.residance}>
                         <View style={{ alignItems:'flex-start'}}>
                             <Text>
                             No. Handphone
@@ -119,11 +112,11 @@ export default class Booking extends Component{
                         </View>
                         <View style={{flex:1,alignItems:'flex-end'}}>
                             <Text>
-                            Ubah
+                           08384028732
                             </Text>
                         </View>
                     </View>         
-                    <View style={{flex:1,flexDirection:'row'}}>
+                    <View style={style.residance}>
                         <View style={{ alignItems:'flex-start'}}>
                             <Text >
                             Pekerjaan
@@ -131,7 +124,7 @@ export default class Booking extends Component{
                         </View>
                         <View style={{flex:1,alignItems:'flex-end'}}>
                             <Text>
-                            Ubah
+                            Karyawan
                             </Text>
                         </View>
                     </View>
@@ -142,7 +135,7 @@ export default class Booking extends Component{
                         Keterangan Biaya Lain
                     </Text>
                 </View>
-                <View style={{flex:1, justifyContent:'flex-end', alignContent:'flex-end', marginTop:40}} >
+                <View style={{flex:1, justifyContent:'flex-end', alignContent:'flex-end', marginTop:30}} >
                     <View style={{flexDirection:'row', alignItems:'center', marginBottom:5}}>
                         <Checkbox
                         color='#2980b9'
@@ -153,11 +146,13 @@ export default class Booking extends Component{
                             Saya menyetujui syarat dan ketentuan berlaku dan memastikan data di atas benar.
                         </Text>
                     </View>
+                    <View style={{marginBottom:5}}>
                         <Button  color="#2980b9" disabled={!isEnable} mode="contained" onPress={() => {
                             this.props.navigation.navigate('Bookinglist')
                         }}>
                             Book
                         </Button>
+                    </View>
                 </View>
             </View>
             </ScrollView>
@@ -171,13 +166,16 @@ const style = StyleSheet.create(
         container: {
             flex:1,
             marginHorizontal:10
-            // marginTop:10
         },
         time:{
             flexDirection:'row',
             marginRight:15,
-            marginVertical:10
-            
+            marginVertical:15
+        },
+        residance:{
+            flex:1,
+            flexDirection:'row', 
+            marginBottom:5
         },
         icon:{
             marginRight:25
