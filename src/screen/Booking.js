@@ -14,11 +14,13 @@ export default class Booking extends Component{
       render(){
         const { checked } = this.state;
         const isEnable  = checked == !false;
-        const time = this.props.navigation.getParam('bookingDate', '')
-          
+        const time = this.props.navigation.getParam('bookingDate')
+        const duration = this.props.navigation.getParam('durationtime')
+        // const plus = time + duration
+        //   const time = this.props.navigation.navigate.state.params.day
         return(
         <View style={{flex:1}}>
-            <Appbar.Header style={{backgroundColor:'#2980b9'}}>
+            <Appbar.Header style={{backgroundColor:'#1BAA56'}}>
                 <Appbar.Content
                 title='Booking'>
                 </Appbar.Content>
@@ -37,10 +39,16 @@ export default class Booking extends Component{
                             </View>
                     </View>
                     <View style={style.icon}>
+                    <TouchableOpacity onPress={()=>{
+                            this.props.navigation.navigate('Duration')
+                        }}>
                             <Text>Durasi Sewa</Text>
+                            <Text>{duration}</Text>
+                            </TouchableOpacity>
                     </View>
                     <View style={style.icon}>
                             <Text>Tanggal Keluar</Text>
+                            {/* <Text>{plus}</Text> */}
                     </View>
                 </View>
                 <View style={style.line}/>
@@ -138,7 +146,7 @@ export default class Booking extends Component{
                 <View style={{flex:1, justifyContent:'flex-end', alignContent:'flex-end', marginTop:30}} >
                     <View style={{flexDirection:'row', alignItems:'center', marginBottom:5}}>
                         <Checkbox
-                        color='#2980b9'
+                        color='#1BAA56'
                         status={checked ? 'checked' : 'unchecked'}
                         onPress={() => { this.setState({ checked: !checked }); }}
                         />
@@ -147,7 +155,7 @@ export default class Booking extends Component{
                         </Text>
                     </View>
                     <View style={{marginBottom:5}}>
-                        <Button  color="#2980b9" disabled={!isEnable} mode="contained" onPress={() => {
+                        <Button  color="#1BAA56" disabled={!isEnable} mode="contained" onPress={() => {
                             this.props.navigation.navigate('Bookinglist')
                         }}>
                             Book

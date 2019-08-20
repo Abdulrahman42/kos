@@ -74,6 +74,6 @@ const styles = StyleSheet.create(
     elevation: 9,
   },
   header:{
-    backgroundColor: '#2980b9'
+    backgroundColor: '#1BAA56'
   }
 })

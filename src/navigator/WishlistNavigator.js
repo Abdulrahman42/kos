@@ -1,30 +1,52 @@
 import {
-    createMaterialTopTabNavigator
+    createMaterialTopTabNavigator, createStackNavigator
 } from 'react-navigation'
 
 import Favorite from '../screen/wishlist/Favorite'
 import See_it from '../screen/wishlist/See_it'
 
-const WishlishNavigator = createMaterialTopTabNavigator({
-    Favorite: {
-        screen: Favorite,
-        NavigationOption: {
-          title: 'Wishlist'
-        }
+const TabScreen = createMaterialTopTabNavigator({
+    Favorit: {
+        screen: Favorite
     },
-    See_it: {
-        screen: See_it,
-        NavigationOption: {
-          title: 'Wishlist'
-        }
+    Diliat: {
+        screen: See_it
     }
-}, {
-    initialRouteName: "See_it",
-    defaultNavigationOptions: {
-        headerStyle: {
-            backgroundColor: '#1BAA56'
-        }
-    }
+},
+{
+  tabBarPosition: 'top',
+  swipeEnabled: true,
+  animationEnabled: true,
+  tabBarOptions: {
+    activeTintColor: '#FFFFFF',
+    inactiveTintColor: '#F8F8F8',
+    style: {
+      backgroundColor: '#1BAA56',
+    },
+    labelStyle: {
+      textAlign: 'center',
+    },
+    indicatorStyle: {
+      borderBottomColor: '#87B56A',
+      borderBottomWidth: 2,
+    },
+  },
+}
+);
+
+//making a StackNavigator to export as default
+const WishlishNavigator = createStackNavigator({
+TabScreen: {
+  screen: TabScreen,
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: '#1BAA56',
+    },
+    headerTintColor: '#FFFFFF',
+    title: 'Wishlist',
+  },
+},
 });
 
 export default WishlishNavigator
+

@@ -7,7 +7,9 @@ import WishlishNavigator from './src/navigator/WishlistNavigator';
 import BookingNavigator from './src/navigator/BookingNavigator';
 import HomeScreen from './src/screen/home/HomeScreen';
 import Profile from './src/screen/profile/Profile';
-import Setting from './src/screen/Setting';
+import Setting from './src/screen/profile/Setting';
+import BarangJasa from './src/screen/BarangJasa';
+import Ads from './src/screen/Ads';
 
 const TabNavigator = createBottomTabNavigator({
   Home: {
@@ -30,22 +32,10 @@ const TabNavigator = createBottomTabNavigator({
   Wishlist: {
     screen: WishlishNavigator,
     navigationOptions: {
-      tabBarIcon: ({
-        tintColor
-      }) => ( <
-        EvilIcons name = "heart"
-        color = {
-          tintColor
-        }
-        size = {
-          25
-        }
-        />
-      )
-    }
+      tabBarIcon: ({tintColor}) => ( <EvilIcons name = "heart"color = {tintColor}size = {25} />)}, title:'Wishlist'
   },
   Chat: {
-    screen: BookingNavigator,
+    screen: Ads,
     navigationOptions: {
       tabBarIcon: ({
         tintColor
@@ -62,7 +52,7 @@ const TabNavigator = createBottomTabNavigator({
     }
   },
   Profile: {
-    screen: Setting,
+    screen: Profile,
     navigationOptions: {
       tabBarIcon: ({
         tintColor
@@ -79,7 +69,7 @@ const TabNavigator = createBottomTabNavigator({
     }
   }
 }, {
-  initialRouteName: "Chat",
+  initialRouteName: "Home",
   defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: "#2980b9"

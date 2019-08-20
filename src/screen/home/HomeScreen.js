@@ -65,7 +65,7 @@ class Index extends Component {
                 this.setState({
                     position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
                 });
-            }, 5000)
+            }, 3000)
         });
     }
  
@@ -86,10 +86,7 @@ class Index extends Component {
                     <View style={styles.body}>
                         <Text style={{ fontWeight: 'bold', fontSize: 15, color:'#000000' }}>Hai</Text>
                         <Text style={{ fontWeight: 'bold', fontSize: 20, color:'#000000' }}>Mau cari kost dimana ?</Text>
-                        <TouchableOpacity onPress={()=>{ this.props.navigation.navigate('search')
-                        }}>
-                        <Button style={styles.button} icon="search" color="#d0d0d0"  mode="outlined" onPress={() => this.props.navigation.navigate('Search')}><Text style={styles.button}>Masukan alamat atau nama tempat</Text></Button>
-                        </TouchableOpacity>
+                        <Button style={styles.button} icon="search" color="#d0d0d0"  mode="outlined" onPress={() => this.props.navigation.navigate('Kostlist')}><Text style={styles.button}>Masukan alamat atau nama tempat</Text></Button>
                     </View>
                     <View style={styles.line} />
                     <View style={styles.body}>
@@ -100,7 +97,6 @@ class Index extends Component {
                             onPositionChanged={position => this.setState({ position })}
                             arrowSize={0}
                             height={150}
- 
                             style={styles.slideshow}
                         />
                         <View style={{ padding: 5, borderRadius: 5, backgroundColor: '#1BAA56', height: 50, marginTop: 10 }}>
@@ -109,7 +105,7 @@ class Index extends Component {
                                 <Text style={{ color: 'white', fontSize: 13 }}>Masuk Atau Daftar Disini</Text>
                             </View>
                             <View style={{ flexDirection: 'row', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'flex-end', alignContent: 'flex-end' }}>
-                                <Button mode='outlined' style={{borderColor:'white', position: 'absolute', width: 80, height: 30 }} onPress={()=>{ this.props.navigation.navigate('search')
+                                <Button mode='outlined' style={{borderColor:'white', position: 'absolute', width: 80, height: 30 }} onPress={()=>{ this.props.navigation.navigate('Auth')
                         }}><Text style={{ color: 'white', fontWeight: 'bold', fontSize: 10 }}>Login</Text></Button>
                             </View>
                         </View>
@@ -122,10 +118,10 @@ class Index extends Component {
                             data={this.state.data}
                             renderItem={({ item: rowData }) => {
                                 return (
-                                    <TouchableOpacity>
-                                    <Card
+                                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Kostlist')}>
+                                    <Card 
                                         title={null}
-                                        containerStyle={{ padding: 0, width: 120, height: 260, marginLeft: 1, maxHeight: 190 }}
+                                        containerStyle={{ padding: 0, width: 120, marginBottom:5, marginLeft: 1, maxHeight: 190 }}
                                         image={{ uri: rowData.imageUrl , position: 'relative' }} 
                                         >
                                         <Text style={{ marginBottom: 0 }} position={'absolute'}>
