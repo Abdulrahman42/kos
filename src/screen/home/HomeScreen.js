@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, FlatList, ScrollView, TouchableOpacity } from '
 import { Appbar, Button } from 'react-native-paper';
 import Slideshow from 'react-native-slideshow';
 import { Card } from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
+import { thisExpression } from '@babel/types';
  
  
 const data = [
@@ -39,6 +41,7 @@ const data = [
 ];
  
 class Index extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -57,6 +60,22 @@ class Index extends Component {
             ],
             data: data
         };
+    }
+    componentDidMount(){
+        this.checklogin();
+    }
+
+    checklogin= async()=>{
+        const data = await AsyncStorage.getItem('usertoken');
+        if (data){
+            this.setState({
+                login:true
+            })
+        }else{
+            this.setState({
+                login:false
+            })
+        }
     }
  
     componentWillMount() {
@@ -105,8 +124,15 @@ class Index extends Component {
                                 <Text style={{ color: 'white', fontSize: 13 }}>Masuk Atau Daftar Disini</Text>
                             </View>
                             <View style={{ flexDirection: 'row', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'flex-end', alignContent: 'flex-end' }}>
-                                <Button mode='outlined' style={{borderColor:'white', position: 'absolute', width: 80, height: 30 }} onPress={()=>{ this.props.navigation.navigate('Auth')
-                        }}><Text style={{ color: 'white', fontWeight: 'bold', fontSize: 10 }}>Login</Text></Button>
+                                <Button mode='outlined' style={{borderColor:'white', position: 'absolute', width: 80, height: 30 }} onPress={()=>{
+                      if(this.state.udahLogin){
+                        this.props.navigation.navigate('Ads')
+                      }else{
+                        this.props.navigation.navigate('Auth')
+                      }
+                      // alert(this.state.udahLogin)
+                    }}
+                        ><Text style={{ color: 'white', fontWeight: 'bold', fontSize: 10 }}>Login</Text></Button>
                             </View>
                         </View>
                         <Text style={{ fontWeight: 'bold', fontSize: 17, color: 'black', marginBottom: 5, marginTop: 10 }}>Kota Populer</Text>

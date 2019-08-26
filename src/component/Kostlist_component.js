@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView, Dimensions} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView, Dimensions, TextInput} from 'react-native';
 import { Appbar, Card} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/Ionicons'
+import search from '../screen/Search';
+
+import {ButtonFilter } from './ButtonFilter'
 
 
 const data = [
@@ -11,7 +14,7 @@ const data = [
    price:'RP. 550.000/bulan',
    address:'jalan ini',
    imageUrl:'https://static.mamikos.com/uploads/cache/data/style/2019-06-25/DfQmJE8f-540x720.jpg',
-
+    jenis: 'putri',
    room:'4 left room'
 
 },
@@ -21,8 +24,10 @@ const data = [
    price:'RP. 750.000',
    address:'jalan nan',
    imageUrl:'https://static.mamikos.com/uploads/cache/data/style/2019-08-14/oWDZ3FjH-540x720.jpg',
+   jenis: 'putra',
    room:'5 left room',
-   icon:'{EvilIcons}'
+   
+
 
 },
   {
@@ -31,7 +36,8 @@ const data = [
    price:'RP. 850.000',
    address:'jalan majapahit',
    imageUrl:'https://static.mamikos.com/uploads/cache/data/style/2019-03-11/SqjXlQo1-540x720.jpg',
-    room:'2 left room'
+    room:'2 left room',
+    jenis: 'putri',
 
 },
   {
@@ -40,7 +46,8 @@ const data = [
    price:'RP. 8.150.000',
    address:'jalan merdeka',
    imageUrl:'https://static.mamikos.com/uploads/cache/data/style/2019-02-13/fJbnkQOz-540x720.jpg',
-   room:'no left room'
+   room:'no left room',
+   jenis: 'putri',
 
 },
 {
@@ -49,7 +56,8 @@ const data = [
  price:'RP. 1.150.000',
  address:'jalan jalan',
  imageUrl:'https://static.mamikos.com/uploads/cache/data/style/2019-02-13/fJbnkQOz-540x720.jpg',
- room:'10 left room'
+ room:'10 left room',
+ jenis: 'putri',
 
 }
 ]
@@ -63,24 +71,29 @@ export default class Kostlist_component extends Component {
     };
   }
   render() {
+    const {goBack} = this.props.navigation
     const{width, height}= Dimensions.get('window');
     return (
-      <View>
-        
-        <Appbar.Header>
+      <View >
+        <Appbar.Header style={{backgroundColor:'white'}}>
         <Appbar.BackAction
-          onPress={this._goBack}
+          onPress={()=> goBack()}
           />
-       
-      </Appbar.Header>
+          <View style={{width:300}}>
+          <TextInput
+          placeholder={'search'}
+          editable = {true}
+          maxLength = {40}
+          />  
+          </View>
+        </Appbar.Header>
           <ScrollView>
-        
         <FlatList 
         keyExtractor={item => item.title}
         data={this.state.data}
         renderItem={({ item: rowData }) => {
           return (
-            <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')}>
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate('Kostdetail',{rowData: rowData})}>
                <Card style={styles.container}>
                    <Card.Cover source={{ uri: rowData.imageUrl }} />
                    <Card.Actions>

@@ -13,7 +13,7 @@ export default class Kostdetail extends Component {
   render() {
     return (
       <View>
-        <Kostdetail_component/>
+        <Kostdetail_component navigation={this.props.navigation}/>
       </View>
     );
   }

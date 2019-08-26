@@ -8,6 +8,12 @@ export default class Ads extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      title:'',
+      price:'',
+      description:'',
+      address:'',
+      name:'',
+      phone:'',
         checked:'first',
         screenHeight:0
     };
@@ -49,8 +55,8 @@ export default class Ads extends Component {
                 }
               }}
             label='Tuliskan judul yang sesuai barang atau jasa anda'
-            value={this.state.text}
-            onChangeText={text => this.setState({ text })}
+            value={this.state.title}
+            onChangeText={title => this.setState({ title })}
             />
         </View>
         <View style={{marginBottom:5}}>
@@ -70,8 +76,8 @@ export default class Ads extends Component {
                 }
               }}
             label='Tuliskan harga barang/jasa'
-            value={this.state.text}
-            onChangeText={text => this.setState({ text })}
+            value={this.state.price}
+            onChangeText={price => this.setState({ price })}
                 />
         </View>
         <View style={{marginBottom:5}}>
@@ -90,8 +96,8 @@ export default class Ads extends Component {
                 }
               }}
             label='Deskripsikan barang/jasa anda agar mudah dipahami'
-            value={this.state.text}
-            onChangeText={text => this.setState({ text })}
+            value={this.state.description}
+            onChangeText={description => this.setState({ description })}
                 />
         </View>
         <View style={{marginBottom:5}}>
@@ -133,7 +139,7 @@ export default class Ads extends Component {
             <TextInput
               mode='flat'
               label='masukan seperti jalan, kelurahan'
-              value={this.state.text}
+              value={this.state.address}
               theme={{
                 // roundness: 50,
                 colors: {
@@ -141,7 +147,7 @@ export default class Ads extends Component {
                   underlineColor:'transparent',
                 }
               }}
-            onChangeText={text => this.setState({ text })}
+            onChangeText={address => this.setState({ address })}
                 />
         </View>
         <View style={{marginBottom:5}}>
@@ -161,7 +167,7 @@ export default class Ads extends Component {
             style={{backgroundcolor:'white'}}
             mode='flat'
             label='Tulis nama lengkap atau sapaan anda'
-            value={this.state.text}
+            value={this.state.name}
             theme={{
                 // roundness: 50,
                 colors: {
@@ -169,7 +175,7 @@ export default class Ads extends Component {
                   underlineColor:'transparent',
                 }
               }}
-            onChangeText={text => this.setState({ text })}
+            onChangeText={name => this.setState({ name })}
                 />
         </View>
         <View style={{marginBottom:5}}>
@@ -188,8 +194,8 @@ export default class Ads extends Component {
                 }
               }}
             label='tulis no telepon/hp'
-            value={this.state.text}
-            onChangeText={text => this.setState({ text })}
+            value={this.state.phone}
+            onChangeText={phone => this.setState({ phone })}
                 />
         </View>
         </View>
