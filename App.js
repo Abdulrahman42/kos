@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import { YellowBox } from 'react-native';
 //private 
 import HomePrivate from './src/screen/Private/Home'
 import ChatPrivate from './src/screen/Private/Chat'
@@ -52,8 +53,21 @@ const PrivateBottom = createBottomTabNavigator({
           )
         }
       }
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      headerStyle: {
+        elevation: 0
+      },
+      headerTintColor: "#F95516"
+    },
+    tabBarOptions: {
+      activeTintColor: "#F95516",
+      inactiveTintColor: "grey"
+    }
   })
-
+  YellowBox.ignoreWarnings(['ViewPagerAndroid']);
 const PrivateNavigator = createStackNavigator({
       Main:{
           screen:PrivateBottom
@@ -96,7 +110,7 @@ const PublicBottom = createBottomTabNavigator({
           tabBarIcon: ({tintColor}) => ( <EvilIcons name = "heart"color = {tintColor}size = {25} />)}, title:'Wishlist'
       },
       Chat: {
-        screen: Chat,
+        screen: Ads,
         navigationOptions: {
           tabBarIcon: ({tintColor}) => ( <EvilIcons name = "comment"color = {tintColor}size = {25}/>
           )
@@ -111,7 +125,18 @@ const PublicBottom = createBottomTabNavigator({
       }
   },
   {
-    headerMode:'none'
+    initialRouteName: "Home",
+    headerMode: null,
+    defaultNavigationOptions: {
+      headerStyle: {
+        elevation: 0
+      },
+      headerTintColor: "#F95516"
+    },
+    tabBarOptions: {
+      activeTintColor: "#F95516",
+      inactiveTintColor: "grey"
+    }
   })
   
 const PublicNavigator = createStackNavigator({
