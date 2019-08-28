@@ -14,12 +14,11 @@ import { Appbar, Card } from "react-native-paper";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-import search from "../screen/Search";
+
 import ActionSheet from 'react-native-actionsheet'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import { FlatList } from 'react-native-gesture-handler';
 
-import { ButtonFilter } from "./ButtonFilter";
 
 const data = [
   {

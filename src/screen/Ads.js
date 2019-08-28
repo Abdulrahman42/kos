@@ -109,10 +109,10 @@ export default class Ads extends Component {
     const scrollEnabled = this.state.screenHeight > height;
     return (
       <View style={{ flex: 1 }}>
-        <Appbar.Header style={styles.header}>
+        {/* <Appbar.Header style={styles.header}>
           <Appbar.BackAction onPress={this._goBack} />
           <Appbar.Content title="Tambah Data Iklan" />
-        </Appbar.Header>
+        </Appbar.Header> */}
 
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -278,6 +278,7 @@ export default class Ads extends Component {
               <TextInput
                 style={{ backgroundcolor: "white" }}
                 mode="flat"
+                keyboardType="numeric"
                 theme={{
                   // roundness: 50,
                   colors: {
@@ -298,6 +299,7 @@ export default class Ads extends Component {
               <TextInput
                 style={{ backgroundcolor: "white" }}
                 mode="flat"
+                keyboardType="numeric"
                 theme={{
                   // roundness: 50,
                   colors: {

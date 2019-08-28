@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Dimensions, ScrollView } from "react-native";
-import { Card, Button, Appbar, TextInput } from "react-native-paper";
+import { Card, Button, Appbar, TextInput,Image } from "react-native-paper";
 // import { ScrollView } from 'react-native-gesture-handler';
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import { Image } from "react-native-paper/typings/components/Avatar";
 
 const { width, height } = Dimensions.get("window");
 export default class Kostdetail_component extends Component {

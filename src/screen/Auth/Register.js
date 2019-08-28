@@ -1,129 +1,100 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
-import Asynstorage from '@react-native-community/async-storage'
-import axios from 'axios'
-import AsyncStorage from '@react-native-community/async-storage';
+import React, { Component } from "react";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Image,
+  Text,
+  TextInput,
+  Button
+} from "react-native";
+
+import env from "../../env/env";
+import Colors from "../../style/color";
+import axios from "axios";
 
 export default class Register extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      name:'',
-      email:'',
-      password:''
+      fullname: "",
+      email: "",
+      password: ""
     };
   }
-  static navigationOption={
-      header:null
+
+  onRegist = () => {
+    this.actRegistAsync();
   };
-  _handlername =(name)=>{
-    this.setState({
-      name: name
-    })
-  }
-  _handleremail =(email)=>{
-    this.setState({
-      email: email
-    })
-  }
-  _handlerpassword =(password)=>{
-    this.setState({
-      password: password
-    })
-  }
-  _submithandler = async () => {
+
+  actRegistAsync = async () => {
     try {
-        //Fetch Data USERNAME dan PASSWORD API , LALU PENGECEKAN , JIKA MATCH BERI TOKEN
-        let tempUser = {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password
-        }
-        await axios.post('https:skut-kost-api.herokuapp.com/api/v1/login', tempUser)
-            .then((response) => {
-                alert('Daftar Berhasil')
-                this.props.navigation.navigate('PublicNav')
-            })
-            .catch((error) => {
-                alert(error)
-            });
-    }
-    catch (e) { }
-}
+      //Fetch Data USERNAME dan PASSWORD API , LALU PENGECEKAN , JIKA MATCH BERI TOKEN
+      let tempUser = {
+        fullname: this.state.fullname,
+        email: this.state.email,
+        password: this.state.password
+      };
+      console.warn(tempUser);
+      await axios
+        .post(env.host + "register", tempUser)
+        .then(response => {
+          alert("Daftar Berhasil");
+          this.props.navigation.navigate("PublicBottom");
+        })
+        .catch(error => {
+          alert(error);
+        });
+    } catch (e) {}
+  };
 
   render() {
     return (
-      <View style={style.container}>
-        <View style={{justifyContent:'center'}}>
-          <View style={{flex:1}}>
-        <TextInput
-           label='Name'
-           mode='outlined'
-           secureTextEntry
-           value={this.state.name}
-           theme={{
-            colors: {
-                primary:'green',
-                underlineColor:'transparent',
-              }
-          }}
-           onChangeText={this._handlername}
-           />
-          
-      <TextInput
-        label='Email'
-        mode='outlined'
-        keyboardType='email-address'
-        value={this.state.email}
-        theme={{
-          colors: {
-              primary:'green',
-              underlineColor:'transparent',
-            }
-        }}
-        onChangeText={this._handleremail}
-      />
-      <TextInput
-        label='Password'
-        mode='outlined'
-        value={this.state.password}
-        theme={{
-          colors: {
-              primary:'green',
-              underlineColor:'transparent',
-            }
-        }}
-        onChangeText={this._handlerpassword} 
-      />
-      </View>
-          <View style={{flex:1}}>
-          <Button style={{backgroundColor:'#F95516', marginTop:5}}mode="contained" onPress={this._submithandler}>
-            Daftar
-          </Button>
-          </View>
-
+      <View>
+        <ScrollView>
+          {/* <View style={{ backgroundColor: '#00a663', height: 60 }}>
+                    </View> */}
           <View>
-
-        <Text>Sudah mempunyai akun?{""}
-        <Text style={{color:'#F95516'}}>
-        Masuk di sini
-          </Text> 
-          </Text>
-</View>
-        </View>
-        </View>
-    
+            <View style={styles.field}>
+              <Text style={styles.text}>Username</Text>
+              {/* <TextInput placeholder='Username' underlineColorAndroid={Colors.secondary}  style={styles.text} onChangeText={(fullname) => this.setState({ fullname })}></TextInput> */}
+              <TextInput
+                placeholder="Username"
+                onChangeText={fullname => this.setState({ fullname })}
+                style={styles.text}
+              ></TextInput>
+              <Text style={styles.text}>Email</Text>
+              <TextInput
+                placeholder="Email"
+                underlineColorAndroid={Colors.secondary}
+                style={styles.text}
+                onChangeText={email => this.setState({ email })}
+              ></TextInput>
+              <Text style={styles.text}>Password</Text>
+              <TextInput
+                placeholder="password"
+                underlineColorAndroid={Colors.secondary}
+                style={styles.text}
+                onChangeText={password => this.setState({ password })}
+              ></TextInput>
+            </View>
+          </View>
+        </ScrollView>
+        <Button onpress={this.onRegist} title="Daftar"></Button>
+      </View>
     );
   }
 }
 
-const style= StyleSheet.create({
-  container:{
-    flex:1,
-    // flexDirection:'row',
-    justifyContent:'center',
-    alignItems:'center',
-    padding:40
+const styles = StyleSheet.create({
+  text: {
+    paddingLeft: 8,
+    fontWeight: "bold"
+  },
+  field: {
+    marginLeft: 8,
+    marginTop: 30,
+    marginBottom: 50,
+    marginRight: 8
   }
-})
+});
