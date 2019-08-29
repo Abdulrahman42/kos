@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-import ButtonFilter from '../component/ButtonFilter'
 import Kostlist_component from '../component/Kostlist_component';
 
 export default class Kostlist extends Component {
@@ -17,7 +16,6 @@ export default class Kostlist extends Component {
     return (
       <View>
         <Kostlist_component navigation={this.props.navigation}/>
-        {/* <ButtonFilter /> */}
       </View>
     );
   }

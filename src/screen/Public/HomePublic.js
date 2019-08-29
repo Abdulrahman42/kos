@@ -78,14 +78,14 @@ class Index extends Component {
       data: data
     };
   }
-  
+
   componentWillMount() {
-      this.setState({
-          interval: setInterval(() => {
-              this.setState({
+    this.setState({
+      interval: setInterval(() => {
+        this.setState({
           position:
             this.state.position === this.state.dataSource.length
-            ? 0
+              ? 0
               : this.state.position + 1
         });
       }, 3000)
@@ -200,7 +200,13 @@ class Index extends Component {
                     width: 80,
                     height: 30
                   }}
-                  onPress={() => this.props.navigation.navigate('Auth')}
+                  onPress={() => {
+                    if (this.state.checklogin) {
+                      this.props.navigation.navigate("Ads");
+                    } else {
+                      this.props.navigation.navigate("Login");
+                    }
+                  }}
                 >
                   <Text
                     style={{ color: "white", fontWeight: "bold", fontSize: 10 }}
@@ -221,7 +227,6 @@ class Index extends Component {
             >
               Kota Populer
             </Text>
-
             <FlatList
               horizontal
               showsHorizontalScrollIndicator={false}

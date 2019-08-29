@@ -39,7 +39,8 @@ export default class Login extends Component {
           if (typeof response.data.token !== "undefined") {
             alert("Login Success");
             AsyncStorage.setItem("userToken", response.data.token);
-            this.props.navigation.navigate("PrivateNavigator");
+            // console.warn(response.data.token);
+            this.props.navigation.navigate("PrivateStack");
           } else {
             alert("Email or Password went wrong");
           }
@@ -56,6 +57,7 @@ export default class Login extends Component {
         <View style={style.borderTextInput}>
           <TextInput
             placeholder="Email"
+            keyboardType="email-address"
             onChangeText={email => this.setState({ email })}
             style={style.inputField}
           ></TextInput>

@@ -52,8 +52,6 @@ export default class Register extends Component {
     return (
       <View>
         <ScrollView>
-          {/* <View style={{ backgroundColor: '#00a663', height: 60 }}>
-                    </View> */}
           <View>
             <View style={styles.field}>
               <Text style={styles.text}>Username</Text>
@@ -66,6 +64,7 @@ export default class Register extends Component {
               <Text style={styles.text}>Email</Text>
               <TextInput
                 placeholder="Email"
+                keyboardType="email-address"
                 underlineColorAndroid={Colors.secondary}
                 style={styles.text}
                 onChangeText={email => this.setState({ email })}
@@ -81,6 +80,17 @@ export default class Register extends Component {
           </View>
         </ScrollView>
         <Button onpress={this.onRegist} title="Daftar"></Button>
+        <View style={{ flexDirection: "row", paddingTop: 10 }}>
+          <Text>
+            Sudah mempunyai akun?{" "}
+            <Text
+              onPress={() => this.props.navigation.navigate("Login")}
+              style={{ color: "#F95516" }}
+            >
+              Masuk disini
+            </Text>
+          </Text>
+        </View>
       </View>
     );
   }

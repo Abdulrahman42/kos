@@ -33,7 +33,7 @@ export default class Login extends Component {
           <Button
             style={styles.button}
             mode="contained"
-            onPress={() => this.props.navigation.navigate("login")}
+            onPress={() => this.props.navigation.navigate("Login")}
           >
             {" "}
             Masuk
