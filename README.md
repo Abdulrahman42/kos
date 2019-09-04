@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://res.cloudinary.com/abdulrahman42/image/upload/v1567519537/KEDAI_DW/ic_launcher_dwijpb.png" width="300"/><br>
+  <img src="https://res.cloudinary.com/abdulrahman42/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1567572249/Kos/kos_icon.png" width="300"/><br>
 </h1>
 
 ## Important
